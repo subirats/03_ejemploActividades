@@ -20,22 +20,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(layout.activity_main); //esto no se puede quitar y hay que escribir siempre después.
 
         Log.e("ESTADOS", "1-En el método onCreate");
-        btnPasar = findViewById(R.id.btnPasarMain);
+        btnPasar = findViewById(R.id.btnAbrirMain);
         btnPasar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //LANZAR LA NUEVA ACTIVIDAD
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e("ESTADOS", "2- En el método onStart");
+        Log.e("ESTADOS", "2- En el método onStart"); //esto es un print en consola
     }
 
     @Override

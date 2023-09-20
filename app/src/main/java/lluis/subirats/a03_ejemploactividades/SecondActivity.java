@@ -1,17 +1,32 @@
 package lluis.subirats.a03_ejemploactividades;
 
+import static lluis.subirats.a03_ejemploactividades.R.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 public class SecondActivity extends AppCompatActivity {
+
+    private Button btnAbrir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(layout.activity_second);
         Log.e("ESTADOS", "1- En el método onCreate SECOND");
+        btnAbrir = findViewById(R.id.btnAbrirSecond);
+        btnAbrir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     protected void onStart() {
@@ -41,6 +56,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Log.e("ESTADOS", "6- En el método onRestart SECOND");
+        this.onDestroy(); //esto es para evitar pasar por esta actividad si desde la 3a pasamos a inicio
     }
 
     @Override
